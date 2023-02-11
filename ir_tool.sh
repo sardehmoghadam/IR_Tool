@@ -4,12 +4,10 @@
 # -- Setup parameters
 # ------------------------------------------------------------
 
-if [ -z $1 ]; then
-	echo "usage: $0 <dir_name>"
-	exit;
-fi
-base_dir=$1
-mkdir -p $base_dir
+
+base_dir="$(pwd)/results"
+echo $base_dir
+mkdir $base_dir
 env_file="$base_dir/env_info.txt"
 null_file="$base_dir/null_info.txt"
 shell_file="$base_dir/shell_info.txt"
@@ -117,14 +115,14 @@ echo -e "\n" >> $system_file
 
 #last information
 echo "[CURRENT USER LAST LOGIN]" >> $system_file
-whoami >> $user_file
+whoami >> $system_file
 echo -e "\n" >> $system_file
-last >> $user_file
+last >> $system_file
 echo -e "\n" >> $system_file
 
 #lastlog information
 echo "[USERS LAST LOGIN]" >> $system_file
-lastlog >> $user_file
+lastlog >> $system_file
 echo -e "\n" >> $system_file
 
 # privilege information
